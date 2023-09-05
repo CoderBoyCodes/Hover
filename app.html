@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Center-align the element horizontally */
+        .centered-element {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Center-align the input element */
+        .centered-element input {
+            display: block; /* Change the display to block */
+            margin: 0 auto; /* Center horizontally */
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 18px;
+            width: 300px;
+            outline: none;
+        }
+
+        /* Style the buttons container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Style the submit, reset, and feedback buttons */
+        .centered-element button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0 5px; /* Add 5px margin on the left and right of each button */
+        }
+
+        .centered-element button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Background animation */
+        body {
+            background: linear-gradient(45deg, #800080, #CC8899, #CC8899, #2980b9);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #title {
+            font-family: "Arial", sans-serif;
+            font-size: 36px;
+            color: #FFFFFF;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #desc {
+            font-size: 20px;
+            color: #FFFFFF;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Hover</h1>
+    <h2 id="desc">Multi-Purpose Browsing System</h2>
+    <div class="centered-element">
+        <input type="text" id="search" placeholder="Search...">
+        <div class="button-container">
+            <button onclick="search()" id="submit">Search</button>
+            <button onclick="reset()" id="reset">Reset</button>
+            <button onclick="giveFeedback()" id="feedback">Feedback</button>
+        </div>
+    </div>
+
+    <script>
+        function search() {
+            // Replace spaces with plus signs for the search query
+            const query = document.getElementById("search").value.replace(/\s+/g, '+');
+
+            // Construct the Google search URL
+            const googleSearchURL = `https://duckduckgo.com/?q=${query}&t=h_&ia=web`;
+
+            // Open the URL in a new tab
+            window.open(googleSearchURL, '_blank');
+        }
+
+        function reset() {
+            // Clear the input field
+            document.getElementById("search").value = "";
+        }
+
+        function giveFeedback() {
+            // Open the user's email client in a new window with a pre-filled email template
+            const subject = encodeURIComponent("Feedback for Hover Browsing System");
+            const body = encodeURIComponent("Please provide your feedback or report any issues here:\n\n\n");
+            window.open(`mailto:coderboycodes@gmail.com?subject=${subject}&body=${body}`);
+        }
+    </script>
+</body>
+</html>
